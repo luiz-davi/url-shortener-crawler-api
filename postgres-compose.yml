@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db:
+    image: postgres:16.1-alpine
+    container_name: rails-postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    command: "postgres -c 'max_connections=500'"
+    environment:
+      POSTGRES_USER: ravengarURL
+      POSTGRES_PASSWORD: postgresURL
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data: {}
