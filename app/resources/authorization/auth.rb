@@ -9,7 +9,7 @@ module Authorization
     public def decode_token
       token_header = request.headers['authorization']
 
-      return render json: { error: 'Jwt token is required.' }, status: :unauthorized unless token_header
+      return nil unless token_header
 
       token = token_header.split(' ').last
 
@@ -27,6 +27,8 @@ module Authorization
       if decoded_token
         user_id = decoded_token[0]['user_id']
         @user = User.find_by(id: user_id)
+      else
+        @user = nil
       end
     end
   end
