@@ -7,7 +7,7 @@ module Authorization
     end
 
     public def decode_token
-      token_header = request.headers['Authorization']
+      token_header = request.headers['authorization']
 
       return render json: { error: 'Jwt token is required.' }, status: :unauthorized unless token_header
 
