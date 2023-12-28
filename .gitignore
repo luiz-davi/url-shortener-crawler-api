@@ -74,3 +74,6 @@ yarn-debug.log*
 # Ignore IDE configs
 .vscode
 .idea
+
+# Ignore env
+/config/env.yml

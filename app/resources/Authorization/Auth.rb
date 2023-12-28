@@ -3,7 +3,7 @@ module Authorization
     extend ActiveSupport::Concern
 
     public def encoded_token(payload)
-      JWT.encode(payload, 'secret', 'HS256')
+      JWT.encode(payload, ENV['JWT_SECRET_KEY'], ENV['JWT_ALGORITHM'])
     end
 
     public def decode_token
@@ -14,7 +14,7 @@ module Authorization
       token = token_header.split(' ').last
 
       begin
-        return JWT.decode(token, 'secret', true, { algorithm: 'HS256' })
+        return JWT.decode(token, ENV['JWT_SECRET_KEY'], true, { algorithm: ENV['JWT_ALGORITHM'] })
       rescue => error
         render json: { error: error.message }, status: :unauthorized
       end

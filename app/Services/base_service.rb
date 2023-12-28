@@ -13,6 +13,6 @@ class BaseService
   end
 
   def encoded_token(payload)
-    JWT.encode(payload, 'secret', 'HS256')
+    JWT.encode(payload, ENV['JWT_SECRET_KEY'], ENV['JWT_ALGORITHM'])
   end
 end

@@ -6,3 +6,9 @@ db_create:
 
 migrate:
 	rails db:migrate
+
+up:
+	rails server
+
+console:
+	rails console
