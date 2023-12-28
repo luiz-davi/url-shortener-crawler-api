@@ -10,5 +10,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :index] do
       post :login,  on: :collection
     end
+
+    resources :websites, only: [:index]
   end
 end

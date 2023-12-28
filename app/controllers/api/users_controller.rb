@@ -25,12 +25,5 @@ module Api
     def user_params
       params.permit(:username, :password, :email)
     end
-
-    def render_result(service)
-      return render json: service.result, status: service.status if service.success?
-
-      render json: { error: service.error }, status: service.status
-    end
-
   end
 end
