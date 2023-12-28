@@ -6,6 +6,3 @@ db_create:
 
 migrate:
 	rails db:migrate
-
-run:
-	rails s
